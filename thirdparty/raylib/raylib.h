@@ -329,10 +329,51 @@
     #endif
 #endif
 
+#include <cmath>
 // Vector2 type
 typedef struct Vector2 {
     float x;
     float y;
+
+	Vector2 operator +(Vector2 rhs)
+	{
+		return Vector2{ x + rhs.x, y + rhs.y };
+	}
+
+	Vector2 operator -(Vector2 rhs)
+	{
+		return Vector2{ x - rhs.x, y - rhs.y };
+	}
+
+	void operator +=(Vector2 rhs)
+	{
+		x += rhs.x;
+		y += rhs.y;
+	}
+
+	Vector2 operator *(float rhs)
+	{
+		return Vector2{ x * rhs, y * rhs };
+	}
+
+	//Magnitude is the vectors length
+	float magnitude()
+	{
+		return sqrt((x*x) + (y*y));
+	}
+
+	//A normalized vector is the vector divided by its magnitude
+	Vector2 normalize()
+	{
+		Vector2 vec = { 0,0 };
+		if (x < 1 && x > -1 && y < 1 && y > -1)
+		{
+			return Vector2{ x, y };
+		}
+
+		return Vector2{x / magnitude(), y / magnitude() };
+	}
+
 } Vector2;
 
 // Vector3 type
