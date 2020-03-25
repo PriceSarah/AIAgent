@@ -14,6 +14,7 @@
 #include "KeyboardBehavior.h"
 #include "SeekBehavior.h"
 #include "FleeBehavior.h"
+#include "WanderBehavior.h"
 
 int main()
 {
@@ -37,9 +38,12 @@ int main()
 	//seekBehavior->setTarget(player);
 	//enemy->addBehavior(seekBehavior);
 
-	FleeBehavior* fleeBehavior = new FleeBehavior();
+	/*FleeBehavior* fleeBehavior = new FleeBehavior();
 	fleeBehavior->setTarget(player);
-	enemy->addBehavior(fleeBehavior);
+	enemy->addBehavior(fleeBehavior);*/
+
+	WanderBehavior* wanderBehavior = new WanderBehavior();
+	enemy->addBehavior(wanderBehavior);
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
