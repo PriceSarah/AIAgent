@@ -1,11 +1,11 @@
 #pragma once
 #include "Behavior.h"
 
-class KeyboardBehavior : public Behavior
+class ScreenEdgeBehavior : public Behavior
 {
 public:
-	KeyboardBehavior() {}
-	virtual ~KeyboardBehavior() {}
+	ScreenEdgeBehavior() {}
+	virtual ~ScreenEdgeBehavior() {}
 
 	virtual Vector2 update(Agent* agent, float deltaTime);
 };
