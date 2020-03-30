@@ -1,11 +1,9 @@
 #include "EnemyAttackState.h"
-#include "Agent.h"
 
-void EnemyAttackState::update(Agent * agent, float deltaTime)
+void EnemyAttackState::update(Agent* agent, float deltaTime)
 {
-	//If the target is null
+	//Stop the target is null
 	if (agent == nullptr || m_target == nullptr) {
-		//Return a zero vector
 		return;
 	}
 
@@ -22,6 +20,6 @@ void EnemyAttackState::update(Agent * agent, float deltaTime)
 	//Subtract the agent's current velocity from the result to get the force we need to apply
 	force = force - agent->getVelocity();
 
-	//Return the force
+	//Apply the force
 	agent->addForce(force * deltaTime);
 }

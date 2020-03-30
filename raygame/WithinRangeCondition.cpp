@@ -1,13 +1,16 @@
 #include "WithinRangeCondition.h"
 
-bool WithinRangeCondition::test(Agent * agent) const
+bool WithinRangeCondition::test(Agent* agent) const
 {
-	//Get the target position
+	//Get the target postion
 	Vector2 targetPos = m_target->getPosition();
-	//get this agents position
+
+	//Get this agent's position
 	Vector2 pos = agent->getPosition();
-	//find the distance
+
+	//Find the distance
 	float distance = (targetPos - pos).magnitude();
-	//return the restult
+
+	//Return the result
 	return distance <= m_range;
 }

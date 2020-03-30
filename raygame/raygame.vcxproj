@@ -133,16 +133,22 @@
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Behavior.cpp" />
+    <ClCompile Include="BooleanDecision.cpp" />
     <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="Decision.cpp" />
+    <ClCompile Include="DecisionBehavior.cpp" />
     <ClCompile Include="EnemyAttackState.cpp" />
-    <ClCompile Include="FiniteStateMachine.cpp" />
+    <ClCompile Include="EvadeBehavior.cpp" />
+    <ClCompile Include="FSM.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="IdleState.cpp" />
     <ClCompile Include="KeyboardBehavior.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PursuitBehavior.cpp" />
     <ClCompile Include="ScreenEdgeBehavior.cpp" />
     <ClCompile Include="SeekBehavior.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="SteeringBehavior.cpp" />
     <ClCompile Include="Transition.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
     <ClCompile Include="WithinRangeCondition.cpp" />
@@ -150,15 +156,21 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="BooleanDecision.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionBehavior.h" />
     <ClInclude Include="EnemyAttackState.h" />
-    <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="EvadeBehavior.h" />
+    <ClInclude Include="FSM.h" />
     <ClInclude Include="FleeBehavior.h" />
     <ClInclude Include="IdleState.h" />
     <ClInclude Include="KeyboardBehavior.h" />
+    <ClInclude Include="PursuitBehavior.h" />
     <ClInclude Include="ScreenEdgeBehavior.h" />
     <ClInclude Include="SeekBehavior.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="SteeringBehavior.h" />
     <ClInclude Include="Transition.h" />
     <ClInclude Include="WanderBehavior.h" />
     <ClInclude Include="WithinRangeCondition.h" />

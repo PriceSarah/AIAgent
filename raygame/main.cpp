@@ -11,20 +11,19 @@
 
 #include "raylib.h"
 #include "Agent.h"
-#include "Behavior.h"
 #include "KeyboardBehavior.h"
 #include "ScreenEdgeBehavior.h"
-#include "FiniteStateMachine.h"
+#include "FSM.h" 
 #include "IdleState.h"
-#include "WithinRangeCondition.h"
 #include "EnemyAttackState.h"
+#include "WithinRangeCondition.h"
 
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	int screenWidth = 1600;
-	int screenHeight = 900;
+	int screenWidth = 3200;
+	int screenHeight = 1800;
 
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
@@ -32,31 +31,28 @@ int main()
 
 	//Create the player
 	Agent* player = new Agent();
-	player->setPosition({ 800.0f, 450.0f });
+	player->setPosition(Vector2{ 1600.0f, 900.0f });
 	player->setSpeed(500.0f);
 	player->setColor(SKYBLUE);
-
 	//Create and add keyboard behavior
 	KeyboardBehavior* keyboardBehavior = new KeyboardBehavior();
 	player->addBehavior(keyboardBehavior);
-
-	//Create and add the screen behavior
+	//Create and add screen edge behavior
 	ScreenEdgeBehavior* screenEdgeBehavior = new ScreenEdgeBehavior();
 	player->addBehavior(screenEdgeBehavior);
 
 	//Create the enemy
 	Agent* enemy = new Agent();
-	enemy->setPosition(Vector2{ 400.0f, 225.0f });
+	enemy->setPosition(Vector2{ 800.0f, 450.0f });
 	enemy->setSpeed(250.0f);
 	enemy->setColor(MAROON);
-
-	//Create the SFM
-	FiniteStateMachine* enemyFSM = new FiniteStateMachine();
+	//Create and add the enemy's FSM
+	FSM* enemyFSM = new FSM();
 	enemy->addBehavior(enemyFSM);
-
-	//Create and add the states
+	//Create and add the idle state
 	IdleState* idleState = new IdleState();
 	enemyFSM->addState(idleState);
+	//Create and add the attack state
 	EnemyAttackState* attackState = new EnemyAttackState(player, 250.0f);
 	enemyFSM->addState(attackState);
 	//Create and add the condition
@@ -65,13 +61,9 @@ int main()
 	//Create and add the transition
 	Transition* toAttackTransition = new Transition(attackState, withinRangeCondition);
 	enemyFSM->addTransition(toAttackTransition);
-	idleState->addTransition(toAttackTransition);
+	idleState->addTransitions(toAttackTransition);
 	//Set current state to idle
 	enemyFSM->setCurrentState(idleState);
-
-
-
-
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
@@ -80,9 +72,9 @@ int main()
 		// Update
 		//----------------------------------------------------------------------------------
 		float deltaTime = GetFrameTime();
+
 		player->update(deltaTime);
 		enemy->update(deltaTime);
-		
 		//----------------------------------------------------------------------------------
 
 		// Draw

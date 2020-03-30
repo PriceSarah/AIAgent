@@ -3,9 +3,8 @@
 
 class WithinRangeCondition : public Condition
 {
-
 public:
-	WithinRangeCondition(Agent* target, float range) 
+	WithinRangeCondition(Agent* target, float range)
 		: m_target(target), m_range(range) {}
 	virtual ~WithinRangeCondition() {}
 
