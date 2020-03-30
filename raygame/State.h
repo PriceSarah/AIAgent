@@ -1,7 +1,8 @@
 #pragma once
+#include "Agent.h"
 #include <vector>
 
-class Agent;
+//class Agent;
 class Transition;
 
 class State

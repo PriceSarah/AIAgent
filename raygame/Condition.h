@@ -9,13 +9,9 @@ public:
 
 	virtual bool test(Agent* agent) const = 0;
 
-	virtual bool execute(Agent* agent, float deltaTime)
+	virtual Vector2 update(Agent* agent, float deltaTime)
 	{
-		if (test(agent))
-		{
-			return true;
-		}
-		return false;
+		return Vector2{ 0.0f, 0.0f };
 	}
 
 };

@@ -1,12 +1,14 @@
+#pragma once
+#include "Agent.h"
 #include "Condition.h"
+
 class State; 
-class GameObject; 
 
 class Transition {
 public: 
 	
-	Transition(State* target, Condition* condition) : m_target(target),
-													  m_condition(condition) {} 
+	Transition(State* target, Condition* condition) 
+		: m_target(target), m_condition(condition) {} 
 	~Transition() {} 
 
 	State* getTargetState() { return m_target; }
